@@ -1,7 +1,7 @@
 package com.innowise.authenticationservice.config.security;
 
-import com.innowise.authenticationservice.security.JwtTokenFilter;
-import com.innowise.authenticationservice.security.JwtTokenProvider;
+import com.innowise.commonstarter.security.JwtTokenFilter;
+import com.innowise.commonstarter.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

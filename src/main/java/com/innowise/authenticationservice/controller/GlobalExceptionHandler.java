@@ -1,7 +1,7 @@
 package com.innowise.authenticationservice.controller;
 
 import com.innowise.authenticationservice.exception.AuthenticationException;
-import com.innowise.common.model.dto.response.ErrorResponse;
+import com.innowise.commonstarter.model.dto.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
   public ResponseEntity<ErrorResponse> handleAuthentication(AuthenticationException ex,
       HttpServletRequest request) {
     return buildResponse("Authentication failed", ex.getMessage(), ex.getClass().getSimpleName(),
-        HttpStatus.UNAUTHORIZED, request);
+        HttpStatus.INTERNAL_SERVER_ERROR, request);
   }
 
   @ExceptionHandler(IllegalArgumentException.class)
