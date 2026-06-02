@@ -1,5 +1,6 @@
 package com.innowise.authenticationservice.model.entity;
 
+import com.innowise.authenticationservice.model.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,9 +40,4 @@ public class UserCredential {
 
   @Column(nullable = false)
   private UUID userId;
-
-  public enum Role {
-    ADMIN,
-    USER,
-  }
 }
