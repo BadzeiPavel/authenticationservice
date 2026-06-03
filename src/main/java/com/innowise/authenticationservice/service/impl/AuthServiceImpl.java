@@ -52,11 +52,15 @@ public class AuthServiceImpl implements AuthService {
     try {
       UserDto createdUser = createUser(request);
       userId = createdUser.id();
-
       persistUserCredentials(request, userId);
-    } catch (FeignException e) {
-      deleteUser(userId);
-      throw mapFeignException(e);
+    } catch (Exception e) {
+      if (userId != null) {
+        deleteUser(userId);
+      }
+      if (e instanceof FeignException fe) {
+        throw mapFeignException(fe);
+      }
+      throw e;
     }
   }
 
@@ -146,7 +150,7 @@ public class AuthServiceImpl implements AuthService {
         return root.get("message").asText();
       }
     } catch (JsonProcessingException ex) {
-      throw new UserAuthenticationException("Failed to parse json response");
+      throw new DownstreamServiceException("Failed to parse json response");
     }
     return e.getMessage();
   }

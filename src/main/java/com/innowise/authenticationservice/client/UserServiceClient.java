@@ -17,7 +17,7 @@ public interface UserServiceClient {
   @PostMapping("/api/v1/users")
   ResponseEntity<UserDto> createUser(@RequestBody UserCreationDto request);
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/api/v1/users/{id}")
   ResponseEntity<Void> deleteUser(
       @PathVariable UUID id,
       @RequestParam(defaultValue = "false") boolean hardDeletion);
